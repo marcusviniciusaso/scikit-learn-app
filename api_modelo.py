@@ -109,12 +109,12 @@ def predict():
         predictions_cache[features] = predicted_class
         logger.info("Cache updated para %s", features)
 
-    # Armazenar em DB
-    db = SessionLocal()
-    new_pred = Prediction(...)
-    db.add(new_pred)
-    db.commit()
-    db.close()
+        # Armazenar em DB
+        db = SessionLocal()
+        new_pred = Prediction(prediction)
+        db.add(new_pred)
+        db.commit()
+        db.close()
 
 @app.route("/predictions", methods=["GET"])
 @token_required
